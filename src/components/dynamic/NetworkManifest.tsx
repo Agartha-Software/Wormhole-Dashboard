@@ -1,4 +1,4 @@
-import type { Network } from "../../actions/get/networks";
+import type { Network } from "../../fetchers/get/networks";
 import Status from "./Status";
 
 export default function ({network, selected}: {network: Network, selected: boolean}) {

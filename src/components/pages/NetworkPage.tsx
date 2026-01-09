@@ -1,27 +1,35 @@
-import { actions } from "astro:actions";
 import { useState, useEffect } from "preact/hooks";
-import type { Network } from "../../actions/get/networks";
 import H2 from "../text/H2";
 import Status from "../dynamic/Status";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { fetchBackendState, validState, type FetchState } from "../../ts/backend";
+import type { InspectAnswer } from "../../ts/rust_bindings/InspectAnswer";
+import type { InspectInfo } from "../../ts/rust_bindings/InspectInfo";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function ({ name }: { name: string }) {
-    const [network, setNetwork] = useState<Network | null | undefined>(null);
+    const [network, setNetwork] = useState<InspectInfo | FetchState | undefined>("loading");
+
+    function validateSetNetwork(nw: InspectAnswer) {
+        if (nw === "PodNotFound") setNetwork(undefined)
+        else setNetwork(nw.Information)
+    }
     useEffect(() => {
-        actions.get_network(name).then(nws => {
-            setNetwork(nws.error ? undefined : nws.data)
-            if (nws.error) console.error(nws.error);
-        })
+        fetchBackendState(
+            {
+                "Inspect": { "Name": name },
+            },
+            validateSetNetwork
+        );
     }, []);
 
     return (
         <>
             <div class="flex items-center gap-5 h-6">
-                <Status status={network?.status} />
+                <Status status={validState(network)?.status} />
                 <H2>{name}</H2>
             </div>
             <div className="w-full h-full">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import type { Network } from "../../actions/get/networks";
+import type { Network } from "../../fetchers/get/networks";
 import List from "../div/List";
 import { actions } from "astro:actions";
 import NetworkManifest from "./NetworkManifest";
