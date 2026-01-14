@@ -1,4 +1,5 @@
 import type { InspectInfo } from "./rust_bindings/InspectInfo";
+import type { RedundancyStatus } from "./rust_bindings/RedundancyStatus";
 import type { Network } from "./types";
 
 export const DEMO: boolean = true; //loads template data if api fails
@@ -20,7 +21,14 @@ export const DEMO_POD: InspectInfo = {
     ],
     mount: "/home/user1/demo_mount",
     disk_space: {
-        free_size: 3000000,
-        total_size: 1000000
+        free_size: 2000000,
+        total_size: 3000000
     }
+}
+
+export const DEMO_REDUNDANCY: { [key in RedundancyStatus]?: number } = {
+    "NotRedundant": 16,
+    "BelowTarget": 512,
+    "OnTarget": 512*5,
+    "AboveTarget": 128,
 }
