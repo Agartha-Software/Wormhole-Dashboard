@@ -1,22 +1,23 @@
 import type { Command } from "./rust_bindings/Command";
 
-export const BACKEND = "127.0.0.1:8081"
+export const BACKEND = "/127.0.0.1:8081"
 export type FetchState = "loading" | "error";
 
 export function fetchBackend(command: Command) {
     return fetch(BACKEND, {
-        method: "GET",
+        method: "POST",
         body: JSON.stringify(command)
     })
 }
 
-export function fetchBackendState(command: Command, setState: (a: any | undefined | FetchState) => void) {
+export function fetchBackendState(command: Command, setState: (a: any | FetchState) => void) {
     fetchBackend(command).then(answer => {
         if (answer.ok) {
+            console.log("called here", answer)
             answer.json().then(out => setState(out))
         } else {
             console.error(answer.status)
-            setState(undefined)
+            setState("error")
         }
     })
 }

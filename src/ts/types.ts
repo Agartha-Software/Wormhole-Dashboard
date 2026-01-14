@@ -2,6 +2,6 @@ import type { NetworkStatus } from "./NetworkStatus";
 
 export type Network = {
     name: string;
-    pods: number;
+    nodes: number;
     status: NetworkStatus
 }
