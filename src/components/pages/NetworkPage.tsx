@@ -46,7 +46,7 @@ export default function ({ name }: { name: string }) {
             <Status status="online" />
             <H2>{name}</H2>
           </div>
-          <div className="grid gap-10 p-10 grid-cols-2 w-full">
+          <div className="grid gap-10 p-10 lg:grid-cols-2 w-full">
             <DiskSpace network={validState(network)} />
             <RedundancyGraph redundancy={DEMO_REDUNDANCY} />
           </div>
