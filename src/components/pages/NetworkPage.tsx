@@ -10,6 +10,7 @@ import type { InspectInfo } from "../../ts/rust_bindings/InspectInfo";
 import { DEMO, DEMO_POD, DEMO_REDUNDANCY } from "../../ts/config";
 import DiskSpace from "../dynamic/NetworkGraphs/DiskSpace";
 import RedundancyGraph from "../dynamic/NetworkGraphs/RedundancyGraph";
+import NodeList from "../dynamic/NetworkGraphs/NodeList";
 import type { RedundancyStatusAnswer } from "../../ts/rust_bindings/RedundancyStatusAnswer";
 import type { RedundancyStatus } from "../../ts/rust_bindings/RedundancyStatus";
 
@@ -62,6 +63,7 @@ export default function ({ name }: { name: string }) {
       <div className="grid gap-10 p-10 lg:grid-cols-2 w-full">
         <DiskSpace network={validState(network)} />
         <RedundancyGraph redundancy={redundancy} />
+        <NodeList nodes={network.connected_peers} />
       </div>
     </>
   )
