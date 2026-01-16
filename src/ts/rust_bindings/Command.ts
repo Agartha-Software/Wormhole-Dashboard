@@ -5,4 +5,4 @@ import type { NewRequest } from "./NewRequest";
 import type { PodId } from "./PodId";
 import type { RemoveRequest } from "./RemoveRequest";
 
-export type Command = { "Unfreeze": PodId } | { "Remove": RemoveRequest } | { "Freeze": PodId } | { "New": NewRequest } | { "GetHosts": GetHostsRequest } | { "Inspect": PodId } | { "Tree": PodId } | { "GenerateConfig": [PodId, boolean, ConfigType] } | { "ShowConfig": [PodId, ConfigType] } | { "CheckConfig": [PodId, ConfigType] } | "Status" | "ListPods" | { "RedundancyStatus": PodId };
+export type Command = { "Unfreeze": PodId } | { "Remove": RemoveRequest } | { "Freeze": PodId } | { "New": NewRequest } | { "GetHosts": GetHostsRequest } | { "Inspect": PodId } | { "Tree": PodId } | { "GenerateConfig": [PodId, boolean, ConfigType] } | { "ShowConfig": [PodId, ConfigType] } | { "CheckConfig": [PodId, ConfigType] } | "Status" | "ListPods" | { "RedundancyStatus": PodId } | { "StatsPerFiletype": PodId };

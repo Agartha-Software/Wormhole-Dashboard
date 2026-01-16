@@ -34,3 +34,11 @@ export const DEMO_REDUNDANCY: { [key in RedundancyStatus]?: number } = {
     "OnTarget": 512*5,
     "AboveTarget": 128,
 }
+
+export const DEMO_STATS_PER_FILETYPE: { [key in string]?: number } = {
+    "pdf": 16,
+    "mp4": 512,
+    "txt": 25,
+    "mkv": 25,
+    "unknown": 128,
+}

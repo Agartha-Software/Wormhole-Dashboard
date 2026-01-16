@@ -1,6 +1,6 @@
 import type { Command } from "./rust_bindings/Command";
 
-export const BACKEND = "http://127.0.0.1:8081"
+export const BACKEND = "http://127.0.0.1:8082"
 export type FetchState = "loading" | "error";
 
 export function fetchBackend(command: Command) {

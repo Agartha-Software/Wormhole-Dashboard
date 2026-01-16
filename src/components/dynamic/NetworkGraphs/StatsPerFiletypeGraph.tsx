@@ -1,26 +1,15 @@
 import { Doughnut } from "react-chartjs-2";
 import GridPart from "../GridPart";
-import type { RedundancyStatus } from "../../../ts/rust_bindings/RedundancyStatus";
 
-export default function ({redundancy}: {redundancy?: { [key in RedundancyStatus]?: number }}) {
-    console.log("redundancy is", redundancy)
+export default function ({stats}: {stats?: { [key in string]?: number }}) {
+    console.log("spft is", stats)
     return (
-        <GridPart title={`Redundancy${Object.values(redundancy).find(v => v!= 0) ? "" : "  -  No data for now"}`}>
+        <GridPart title={`Stats per file type${Object.values(stats).find(v => v!= 0) ? "" : "  -  No data for now"}`}>
             <Doughnut data={{
-                labels: [
-                    'Not Redundant',
-                    'Below Target',
-                    'On Target',
-                    'Above Target',
-                ],
+                labels: Object.keys(stats),
                 datasets: [{
-                    label: 'Redundancy',
-                    data: [
-                        redundancy.NotRedundant,
-                        redundancy.BelowTarget,
-                        redundancy.OnTarget,
-                        redundancy.AboveTarget,
-                    ],
+                    label: 'Stats per file type',
+                    data: Object.values(stats),
                     backgroundColor: [
                         'rgb(255, 99, 132)',
                         'rgb(255, 255, 75)',
