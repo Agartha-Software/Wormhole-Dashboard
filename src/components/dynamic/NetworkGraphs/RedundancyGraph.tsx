@@ -3,8 +3,9 @@ import GridPart from "../GridPart";
 import type { RedundancyStatus } from "../../../ts/rust_bindings/RedundancyStatus";
 
 export default function ({redundancy}: {redundancy?: { [key in RedundancyStatus]?: number }}) {
+    console.log("redundancy is", redundancy)
     return (
-        <GridPart title="Redundancy">
+        <GridPart title={`Redundancy${Object.values(redundancy).find(v => v!= 0) ? "" : "  -  No data for now"}`}>
             <Doughnut data={{
                 labels: [
                     'Not Redundant',

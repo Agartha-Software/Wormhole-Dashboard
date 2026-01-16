@@ -7,7 +7,6 @@ export const DEMO: boolean = true; //loads template data if api fails
 export const DEMO_NETWORK: Network = {
     name: "demo",
     status: "online",
-    nodes: 2,
 }
 
 export const DEMO_POD: InspectInfo = {
@@ -22,7 +21,10 @@ export const DEMO_POD: InspectInfo = {
     mount: "/home/user1/demo_mount",
     disk_space: {
         free_size: 2000000,
-        total_size: 3000000
+        total_size: 3000000,
+        files: 420,
+        ffree: 0,
+        bsize: 0,
     }
 }
 
