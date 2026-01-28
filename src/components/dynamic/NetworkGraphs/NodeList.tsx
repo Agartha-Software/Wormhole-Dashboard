@@ -10,7 +10,7 @@ export default function ({ nodes }: { nodes: PeerInfo[] }) {
                 {nodes.map(n => (
                     <li>
                         <p>
-                            <b>{`${n.hostname}`}</b>{` - ${n.url || "No url"}`}
+                            <b>{`${n.nickname}`}</b>{` - ${n.listen_addrs?.join(", ") || "No url"}`}
                         </p>
                     </li>
                 ))}
